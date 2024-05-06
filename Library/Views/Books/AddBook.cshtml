@@ -1,0 +1,18 @@
+﻿@using Library.Models
+@{
+    ViewBag.Title = "AddBook";
+}
+
+<div>
+    <form method="post" action="/Books/AddBook">
+        <div class="form-group">
+            <label for="Title">Название</label>
+            <input type="text" name="Title" id="Title" class="form-control">
+            <label for="Description">Описание</label>
+            <input type="text" name="Description" id="Description" class="form-control">
+            <input type="submit" value="Сохранить" class="btn btn-primary"/>
+        </div>
+
+    </form>
+</div>
+

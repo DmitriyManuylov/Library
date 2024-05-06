@@ -1,0 +1,26 @@
+﻿@using Library.Models
+@{
+    ViewBag.Title = "AddIssuance";
+    string BookId = nameof(Issuance.BookId);
+    string ClientId = nameof(Issuance.ClientId);
+    string RequiredReturningDate = nameof(Issuance.RequiredReturningDate);
+}
+
+<div>
+    <form method="post" action="/Issuance/AddIssuance">
+        <div class="form-group">
+            <label for=@BookId>Id книги</label>
+            <input type="text" name=@BookId id=@BookId class="form-control">
+
+            <label for=@ClientId>Id посетителя</label>
+            <input type="text" name=@ClientId id=@ClientId class="form-control">
+
+            <label for=@RequiredReturningDate>Срок возврата</label>
+            <input type="date" name=@RequiredReturningDate id=@RequiredReturningDate class="form-control">
+
+            <input type="submit" value="Сохранить" class="btn btn-primary" />
+        </div>
+
+    </form>
+</div>
+

@@ -1,0 +1,61 @@
+﻿@using Library.Models
+@model IList<Issuance>
+@{
+    ViewBag.Title = "Выданные книги";
+
+}
+
+<div>
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <td>Id</td>
+                <td>Id книги</td>
+                <td>Id посетителя</td>
+                <td>Дата выдачи</td>
+                <td>Срок возврата</td>
+                <td>Статус</td>
+                <td>Фактическая дата возврата</td>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (Issuance issuance in Model)
+            {
+                string statusString = "";
+                switch (issuance.Status)
+                {
+                    case IssuanceStatus.NotReturned:
+                        {
+                            statusString = "Не возвращена";
+                            break;
+                        }
+                    case IssuanceStatus.Returned:
+                        {
+                            statusString = "Возвращена";
+                            break;
+                        }
+                }
+
+                <tr>
+                    <td>@issuance.Id</td>
+                    <td>@issuance.BookId</td>
+                    <td>@issuance.ClientId</td>
+                    <td>@issuance.IssuanceDate</td>
+                    <td>@issuance.RequiredReturningDate</td>
+                    <td>@statusString</td>
+                    <td>@issuance.ActualReturningDate</td>
+                    <td>
+                        @if (issuance.Status == IssuanceStatus.NotReturned)
+                        {
+                            <form method="post" action="/Issuance/ReturnBook">
+                                <input type="hidden" name="issuanceId" value=@issuance.Id>
+                                <input type="submit" value="Вернуть книгу" class="btn btn-primary" />
+                            </form>
+                        }
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+

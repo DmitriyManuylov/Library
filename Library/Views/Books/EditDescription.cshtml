@@ -1,0 +1,19 @@
+﻿@model Library.Models.Book
+@{
+    ViewBag.Title = "Редактирование описания";
+}
+
+<div>
+    <form method="post" action="/Books/EditDescription">
+        <div class="form-group">
+            <input type="hidden" name="Id" value=@Model.Id>
+            <label for="Title">Название</label>
+            <input type="text" name="Title" id="Title" class="form-control" value="@Model.Title" disabled>
+            <label for="Description">Описание</label>
+            <input type="text" name="Description" id="Description" class="form-control" value="@Model.Description">
+            <input type="submit" value="Сохранить" class="btn btn-primary" />
+        </div>
+
+    </form>
+</div>
+

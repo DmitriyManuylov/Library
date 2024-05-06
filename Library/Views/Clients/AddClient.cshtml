@@ -1,0 +1,21 @@
+﻿@using Library.Models
+@{
+    ViewBag.Title = "AddClient";
+}
+
+<div>
+    <form method="post" action="/Clients/AddClient">
+        <div class="form-group">
+            <label for="FirstName">Имя</label>
+            <input type="text" name=@string.Format($"{nameof(Client.FirstName)}") id="FirstName" class="form-control">
+            <label for="LastName">Фамилия</label>
+            <input type="text" name=@string.Format($"{nameof(Client.LastName)}") id="LastName" class="form-control">
+            <label for="Phone">Телефон</label>
+            <input type="text" name=@string.Format($"{nameof(Client.Phone)}") id="Phone" class="form-control">
+            <label for="Email">Электронная почта</label>
+            <input type="text" name=@string.Format($"{nameof(Client.Email)}") id="Email" class="form-control">
+            <input type="submit" value="Сохранить" class="btn btn-primary"/>
+        </div>
+        
+    </form>
+</div>

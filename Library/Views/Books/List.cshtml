@@ -1,0 +1,35 @@
+﻿@using Library.Models
+@model IList<Book>
+
+@{
+    ViewBag.Title = "BooksList";
+}
+
+<div>
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <td>Id</td>
+                <td>Название</td>
+                <td>Описание</td>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (Book book in Model)
+            {
+                <tr>
+                    <td>@book.Id</td>
+                    <td>@book.Title</td>
+                    <td>@book.Description</td>
+                    <td>
+                        <form method="get" action="/Books/EditDescription">
+                            <input type="hidden" name="bookId" value=@book.Id>
+                            <input type="submit" value="Редактировать описание" class="btn btn-primary" />
+                        </form>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
